@@ -69,6 +69,18 @@ The ? symbol can also be added to quantifiers so they match as few occurrences a
 
 Now, let's use quantifiers in our example. When it comes to the username /^[b-l0-9_-]{3,15}$/, we have the quantifier {3,15}. This means that we want to find the preceding string pattern a minimum of 3 times and a maximum of 15 times. Because our bracket expression ([b-l0-9_-]) will match any string that includes any combination of lowercase letters between b and l, any number between 0 and 9, and the special characters of underscore and hyphen, this quantifier means that the string has to be between 3 and 15 characters. 
 
+### Bracket Expressions
+
+Anything inside a set of square brackets [] is a range of characters known as bracket expressions, or they may also be called positive character group because they outline the characters we want to include when we're matching. We can write these expressions to include all of the characters we'd like to match. 
+
+For instance, [abc] will look for a string that includes a or b or c, regardless of how long the string is. So any examples of a match would include: "aaa", "bbb", "ccc", "bat", "bin", "court", and "bca". It's also common to see a hyphen (-) used between letters and numbers to represent a range of possible characters. This means that [a-c] equates to [abc].
+
+In the username example we've previously mentioned (/^[b-l0-9_-]{3,15}$/), we can break down the bracket expressions as follows: 
+
+- [b-l] - This means the string can only contain any lowercase letter between b and l. If we also wanted to include uppercase letters, then the expression would have to be changed to [b-lB-L].
+- [0-9] - This means the string can only contain any number between 0 and 9.
+- [_-] - This means that the string can contain any underscore or hyphen. Both of these are known as special characters. You might have had to use them when creating a strong password. In this case, we only want a string that includes _ or -. 
+
 ### OR Operator
 
 
@@ -78,8 +90,6 @@ Now, let's use quantifiers in our example. When it comes to the username /^[b-l0
 ### Flags
 
 ### Grouping and Capturing
-
-### Bracket Expressions
 
 ### Greedy and Lazy Match
 
