@@ -24,9 +24,22 @@ Below are some more examples of RegEx in action and how to use it.
 - [Back-references](#back-references)
 - [Look-ahead and Look-behind](#look-ahead-and-look-behind)
 
-## Regex Components
+## RegEx Components
 
 ### Anchors
+
+Anchors are used at the beginning and end of searches to check if a string fully matches a pattern, although they themselves do not match the characters. They strictly affirm a string matches a location. Anchors will create parameters.
+
+Common types of RegEx anchors are ^ (caret)	and $ (dollar). 
+
+#### Caret
+
+The ^ anchor signifies a string that begins with the characters that follow. This could be used in one of two ways:
+
+- An exact string match, such as when ^The, where the strings "The" or "The dog" match, but "the" and "the dog" don't. This is because a RegEx is case sensitive, so coders have to be specific. 
+- You can also use ^ in a range of possible matches displayed by using bracket expressions.
+
+#### Dollar 
 
 ### Quantifiers
 
