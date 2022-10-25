@@ -41,6 +41,10 @@ The ^ anchor signifies a string that begins with the characters that follow. Thi
 
 #### Dollar 
 
+The $ anchor signifies a string that ends with the characters before it. Just as with the ^ character, the $ character can be preceded by an exact string or a range of possible matches. 
+
+So if we were to match the username /^[a-z0-9_-]{3,16}$/, the string must start and end with something that mathces the pattern [a-z0-9_-]. However, {3,16} is not included in our match because it's a different component called a quantifier, which is up next on our tutorial.
+
 ### Quantifiers
 
 ### OR Operator
