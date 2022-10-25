@@ -43,11 +43,35 @@ The ^ anchor signifies a string that begins with the characters that follow. Thi
 
 The $ anchor signifies a string that ends with the characters before it. Just as with the ^ character, the $ character can be preceded by an exact string or a range of possible matches. 
 
-So if we were to match the username /^[a-z0-9_-]{3,16}$/, the string must start and end with something that mathces the pattern [a-z0-9_-]. However, {3,16} is not included in our match because it's a different component called a quantifier, which is up next on our tutorial.
+So if we were to match the username /^[b-l0-9_-]{3,15}$/, the string must start and end with something that mathces the pattern [b-l0-9_-]. However, {3,16} is not included in our match because it's a different component called a quantifier, which is up next on our tutorial.
 
 ### Quantifiers
 
+Quantifiers set the limits of a string that your RegEx matches (or an individual section of the string). They often include the minimum and maximum number of characters that your RegEx is looking for. 
+
+Qunatifiers match as many occurrences of certain patterns as possible, such as: 
+
+- *—Matches the pattern zero or more times
+
+- +—Matches the pattern one or more times
+
+- ?—Matches the pattern zero or one time
+
+- {}—Curly brackets can provide three different ways to set limits for a match:
+
+- { n }—Matches the pattern exactly n number of times
+
+- { n, }—Matches the pattern at least n number of times
+
+- { n, x }—Matches the pattern from a minimum of n number of times to a maximum of x number of times
+
+The ? symbol can also be added to quantifiers so they match as few occurrences as possible. 
+
+Now, let's use quantifiers in our example. When it comes to the username /^[b-l0-9_-]{3,15}$/, we have the quantifier {3,15}. This means that we want to find the preceding string pattern a minimum of 3 times and a maximum of 15 times. Because our bracket expression ([b-l0-9_-]) will match any string that includes any combination of lowercase letters between b and l, any number between 0 and 9, and the special characters of underscore and hyphen, this quantifier means that the string has to be between 3 and 15 characters. 
+
 ### OR Operator
+
+
 
 ### Character Classes
 
