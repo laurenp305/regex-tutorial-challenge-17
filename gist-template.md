@@ -1,10 +1,14 @@
-# Title (replace with your title)
+# Regex Tutorial: Matching URLs with Regular Expressions
 
-Introductory paragraph (replace this with your text)
+In JavaScript, a Regular Expression (RegEx) is an object that describes a sequence of characters used for defining a search pattern. For example, /^a...s$/. This code defines a RegEx pattern. The pattern refers to any five lietter string starting with 'a' and ending with 's'.
+
+Below is a tutorial on RegEx and how to use this object with the help of examples.
 
 ## Summary
 
-Briefly summarize the regex you will be describing and what you will explain. Include a code snippet of the regex. Replace this text with your summary.
+As a junior developer, I've learned that RegEx can be a powerful tool when writing code, paticularly Javascript. The pre-defined and ready-to-use RegEx make them user friendly and make my life a lot easier! Some common examples of regular expressions include match(), matchAll(), replace(), replaceAll(), search(), and split(). RegEx can be used for forms of validation, such as when someone is filling out an online form and has to input their email address.
+
+Below are some more examples of RegEx in action and how to use it. 
 
 ## Table of Contents
 
