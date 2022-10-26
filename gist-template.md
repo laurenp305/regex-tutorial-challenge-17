@@ -111,11 +111,19 @@ The last three character classes listed can be changed to perform an inverse mat
 
 #### Escapes 
 
+The backlash (\) in a RegEx "escapes" a character that would other be interpreted literally. For instance, the open curly bracket ({) is used to begin a qunatifier, but adding a backslash before it (\{) tells the RegEx to look for the open curly bracket character instead of beginning to define a quantifier. This is common when looks for strings with special characters that are the same as a particular component of a regular expression.
 
+*Don't forget that all special characters, including the backslash, lose their "special" title inside bracket expressions.
 
 ### Flags
 
+Flags are the one exception to the rule that a RegEx must be wrapped in slash characters. Flags are placed at the end of a RegEx, after the second slash, and they can define additional functionality or limits of the RegEx. While there are 6 types of flags in total, you're more likely to use these 3: 
 
+- g—Global search: the regex should be tested against all possible matches in a string.
+
+- i—Case-insensitive search: case should be ignored while attempting a match in a string
+
+- m—Multi-line search: a multi-line input string should be treated as multiple lines
 
 ### Grouping and Capturing
 
