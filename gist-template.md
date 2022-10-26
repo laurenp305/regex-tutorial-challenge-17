@@ -127,6 +127,25 @@ Flags are the one exception to the rule that a RegEx must be wrapped in slash ch
 
 ### Grouping and Capturing
 
+#### Grouping
+
+Grouping constructs allow you to break up regular expressions into multiple parts to make them more easy to understand. The primary way you break up or group a section of a RegEx is by using parentheses (). Each section with parentheses is know as a subexpression. 
+
+For example: (abc):(xyz) contains two groups or subexpressions. The first is looking for a string that matches the string "abc" and the second is look for a string that matches the string "xyz". Subexpressions look for an exact match, unlike bracket expressions. 
+
+#### Capturing
+
+Capturing groups are a way to treat multiple characters in a single unit. They're created by grouping characters inside of parentheses. For instance, the RegEx (dog) creates a single group containing the letters "d" "o" and "g". 
+
+Capturing groups are numbered by counting their opening parenthese from left to right. For instance, the expression ((A)(B(C))) contains four groups, which are: 
+
+- ((A)(B(C)))
+- (A)
+- (B(C))
+- (C)
+
+To find the number of groups in an expression, you can use the groupCount method on a matcher object. The groupCount method returns an int showing the number of capturing groups in the pattern. 
+
 ### Greedy and Lazy Match
 
 ### Boundaries
