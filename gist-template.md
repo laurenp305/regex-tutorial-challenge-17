@@ -171,11 +171,16 @@ A good way to solve this problem is with lazy quantifiers.
 
 #### Lazy Quantifiers
 
-A lazy quantifier first repeats the token You can make a greedy quantifier lazy by adding a ? mark. For instance, you'd add a question mark to the previous example like this: {START}.*?{END}
+A lazy quantifier first repeats the token as few times as required and exapnds the match as the engine backtracks through the regular expression to find an overall match. You can make a greedy quantifier lazy by adding a ? mark. For instance, you'd add a question mark to the previous example like this: {START}.*?{END}
 
 The lazy .*? guarantees that the  dot only matches as many characters as needed for the rest of the pattern to succeed. This means the pattern only matches one {START}…{END} item at a time, which is the goal. 
 
 ### Boundaries
+
+There are various types of boundaries, but for now we'll just cover word boundaries. A word boundary \b matches the positions where one side is a word character (such as a letter, digit, or underscore) while the other side is not a word character (such as the beginning of the string or a space character). 
+
+For example, the RegEx \bbat\b would match the word bat in baseball bat, but it wouldn't match battery. If we were to have another example, such as \bcat\b, cat would match in catfish but wou
+
 
 ### Back-references
 
