@@ -93,9 +93,29 @@ Using the OR operator (|), the expression [abc] together could be written as (a|
 
 This means that while "abc:xyz" and "acb:xyz" would match, "xyz:abc" would not.
 
-### Character Classes
+### Character Classes & Escapes 
+
+#### Classes
+
+A character class in a RegEx defines a set of characters, any of which can occur in an input string to accomplish a match. In addition to the positive and ngative character groups, other common character classes include: 
+
+- .—Matches any character except the newline character (\n)
+
+- \d—Matches any Arabic numeral digit. This class is equivalent to the bracket expression [0-9].
+
+- \w—Matches any alphanumeric (letters and numbers) character from the basic Latin alphabet, including the underscore (_). This class equates to this bracket expression [A-Za-z0-9_].
+
+- \s—Matches a single whitespace character, including tabs and line breaks
+
+The last three character classes listed can be changed to perform an inverse match by capitalizing letters. 
+
+#### Escapes 
+
+
 
 ### Flags
+
+
 
 ### Grouping and Capturing
 
