@@ -81,9 +81,17 @@ In the username example we've previously mentioned (/^[b-l0-9_-]{3,15}$/), we ca
 - [0-9] - This means the string can only contain any number between 0 and 9.
 - [_-] - This means that the string can contain any underscore or hyphen. Both of these are known as special characters. You might have had to use them when creating a strong password. In this case, we only want a string that includes _ or -. 
 
+If we put these expressions together to make the pattern /^[b-l0-9_-]{3,15}$/, this will match any string that includes any combination of lowercase letters between b and l, any nunber between 0 and 9, and the special characters underscore or hyphen. These characters can also be in any order and the pattern does not have to meet all requirements. 
+
+A bracket expression can also be turned into a negative characte group by adding the caret (^) symbol at the beginning o the expression inside the brackets. A common example is matching a string that doesn't include vowels. For instance, the pattern [^aeiouAEIOU] would find strings that don't include uppercase or lowercase vowels.
+
 ### OR Operator
 
+As we previously mentioned, a bracket expression doesn't have to meet all of the requirements in the pattern to create a string. This means that /^[b-l0-9_-]{3,15}$/ searches for alphanumeric characters or the two special characters included in the pattern. 
 
+Using the OR operator (|), the expression [abc] together could be written as (a|b|c). This means that you could also change the expression (abc):(xyz) to (a|b|c):(x|y|z) with the OR operator. 
+
+This means that while "abc:xyz" and "acb:xyz" would match, "xyz:abc" would not.
 
 ### Character Classes
 
