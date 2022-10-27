@@ -49,41 +49,7 @@ So if we were to match the username /^[b-l0-9_-]{3,15}$/, the string must start 
 
 Quantifiers set the limits of a string that your RegEx matches (or an individual section of the string). They often include the minimum and maximum number of characters that your RegEx is looking for. 
 
-Qunatifiers match as many occurrences of certain patterns as possible, such as: 
-
-- *—Matches the pattern zero or more times
-
-- +—Matches the pattern one or more times
-
-- ?—Matches the pattern zero or one time
-
-- {}—Curly brackets can provide three different ways to set limits for a match:
-
-- { n }—Matches the pattern exactly n number of times
-
-- { n, }—Matches the pattern at least n number of times
-
-- { n, x }—Matches the pattern from a minimum of n number of times to a maximum of x number of times
-
-The ? symbol can also be added to quantifiers so they match as few occurrences as possible. 
-
-Now, let's use quantifiers in our example. When it comes to the username /^[b-l0-9_-]{3,15}$/, we have the quantifier {3,15}. This means that we want to find the preceding string pattern a minimum of 3 times and a maximum of 15 times. Because our bracket expression ([b-l0-9_-]) will match any string that includes any combination of lowercase letters between b and l, any number between 0 and 9, and the special characters of underscore and hyphen, this quantifier means that the string has to be between 3 and 15 characters. 
-
-### Bracket Expressions
-
-Anything inside a set of square brackets [] is a range of characters known as bracket expressions, or they may also be called positive character group because they outline the characters we want to include when we're matching. We can write these expressions to include all of the characters we'd like to match. 
-
-For instance, [abc] will look for a string that includes a or b or c, regardless of how long the string is. So any examples of a match would include: "aaa", "bbb", "ccc", "bat", "bin", "court", and "bca". It's also common to see a hyphen (-) used between letters and numbers to represent a range of possible characters. This means that [a-c] equates to [abc].
-
-In the username example we've previously mentioned (/^[b-l0-9_-]{3,15}$/), we can break down the bracket expressions as follows: 
-
-- [b-l] - This means the string can only contain any lowercase letter between b and l. If we also wanted to include uppercase letters, then the expression would have to be changed to [b-lB-L].
-- [0-9] - This means the string can only contain any number between 0 and 9.
-- [_-] - This means that the string can contain any underscore or hyphen. Both of these are known as special characters. You might have had to use them when creating a strong password. In this case, we only want a string that includes _ or -. 
-
-If we put these expressions together to make the pattern /^[b-l0-9_-]{3,15}$/, this will match any string that includes any combination of lowercase letters between b and l, any nunber between 0 and 9, and the special characters underscore or hyphen. These characters can also be in any order and the pattern does not have to meet all requirements. 
-
-A bracket expression can also be turned into a negative characte group by adding the caret (^) symbol at the beginning o the expression inside the brackets. A common example is matching a string that doesn't include vowels. For instance, the pattern [^aeiouAEIOU] would find strings that don't include uppercase or lowercase vowels.
+Quantifiers in the matching email RegEx includes the + operator, which connects the user's email name+ email service+ .com. Another quantifier used in this regular expression is {2,6}, which allows a match range of 2 to 6 characters for the character set of [a-z\.].
 
 ### OR Operator
 
