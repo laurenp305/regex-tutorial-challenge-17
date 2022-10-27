@@ -49,15 +49,9 @@ So if we were to match the username /^[b-l0-9_-]{3,15}$/, the string must start 
 
 Quantifiers set the limits of a string that your RegEx matches (or an individual section of the string). They often include the minimum and maximum number of characters that your RegEx is looking for. 
 
-Quantifiers in the matching email RegEx includes the + operator, which connects the user's email name+ email service+ .com. Another quantifier used in this regular expression is {2,6}, which allows a match range of 2 to 6 characters for the character set of [a-z\.].
+Quantifiers in the matching email RegEx includes the + operator, which connects the user's email name+ email service+ .com. Another quantifier used in this regular expression is {2,6}. In the expression /^[b-l0-9_.-]+, any character matching the characters inside the bracket is expected to appear at least once with no maximum. 
 
-### OR Operator
-
-As we previously mentioned, a bracket expression doesn't have to meet all of the requirements in the pattern to create a string. This means that /^[b-l0-9_-]{3,15}$/ searches for alphanumeric characters or the two special characters included in the pattern. 
-
-Using the OR operator (|), the expression [abc] together could be written as (a|b|c). This means that you could also change the expression (abc):(xyz) to (a|b|c):(x|y|z) with the OR operator. 
-
-This means that while "abc:xyz" and "acb:xyz" would match, "xyz:abc" would not.
+If we were to have an expression such as [b-z.]{2,6}, then 2 to 6 characters matching those inside the brackets are expected. The numbers inside the curly brackets refers to the minimum and maximum number of characters expected.
 
 ### Character Classes & Escapes 
 
