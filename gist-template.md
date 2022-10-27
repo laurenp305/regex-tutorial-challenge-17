@@ -14,15 +14,10 @@ Below are some more examples of Match an Email RegEx in action and how to use it
 
 - [Anchors](#anchors)
 - [Quantifiers](#quantifiers)
-- [OR Operator](#or-operator)
 - [Character Classes](#character-classes)
-- [Flags](#flags)
 - [Grouping and Capturing](#grouping-and-capturing)
 - [Bracket Expressions](#bracket-expressions)
 - [Greedy and Lazy Match](#greedy-and-lazy-match)
-- [Boundaries](#boundaries)
-- [Back-references](#back-references)
-- [Look-ahead and Look-behind](#look-ahead-and-look-behind)
 
 ## RegEx Components
 
@@ -51,9 +46,7 @@ Quantifiers in the matching email RegEx includes the + operator, which connects 
 
 If we were to have an expression such as [a-z.]{2,6}, then 2 to 6 characters matching those inside the brackets are expected. The numbers inside the curly brackets refers to the minimum and maximum number of characters expected.
 
-### Character Classes & Escapes 
-
-#### Classes
+### Character Classes 
 
 A character class in a RegEx defines a set of characters, any of which can occur in an input string to accomplish a match. In addition to the positive and ngative character groups, other common character classes include: 
 
@@ -61,36 +54,15 @@ In our expression, \d in [\da-z\.-]+ is used to match any digital character. The
 
 Additionally, unlike other character classes, \d, \w (matches a word character), and \s (matches a whitespace characters), the character class "." - which matches any character - doesn't require a backslash. As a result, the backslash has to be used to negate its use as a character class and interpret it as the character ".".
 
-### Flags
-
-Flags are the one exception to the rule that a RegEx must be wrapped in slash characters. Flags are placed at the end of a RegEx, after the second slash, and they can define additional functionality or limits of the RegEx. While there are 6 types of flags in total, you're more likely to use these 3: 
-
-- g—Global search: the regex should be tested against all possible matches in a string.
-
-- i—Case-insensitive search: case should be ignored while attempting a match in a string
-
-- m—Multi-line search: a multi-line input string should be treated as multiple lines
-
 ### Grouping and Capturing
-
-#### Grouping
 
 Grouping constructs allow you to break up regular expressions into multiple parts to make them more easy to understand. The primary way you break up or group a section of a RegEx is by using parentheses (). Each section with parentheses is know as a subexpression. 
 
-For example: (abc):(xyz) contains two groups or subexpressions. The first is looking for a string that matches the string "abc" and the second is look for a string that matches the string "xyz". Subexpressions look for an exact match, unlike bracket expressions. 
-
-#### Capturing
-
 Capturing groups are a way to treat multiple characters in a single unit. They're created by grouping characters inside of parentheses. For instance, the RegEx (dog) creates a single group containing the letters "d" "o" and "g". 
 
-Capturing groups are numbered by counting their opening parenthese from left to right. For instance, the expression ((A)(B(C))) contains four groups, which are: 
+Both capturing and grouping can be done with () in regex.
 
-- ((A)(B(C)))
-- (A)
-- (B(C))
-- (C)
-
-To find the number of groups in an expression, you can use the groupCount method on a matcher object. The groupCount method returns an int showing the number of capturing groups in the pattern. 
+For example, when we look at our expression /^([a-z0-9_.-]+)@([\da-z.-]+).([a-z.]{2,6})$/, between the /^ and $/, there are three character groups, ([a-z0-9_.-]+), ([\da-z.-]+), ([a-z.]{2,6}). If we were to label these groups, then we'd see it this way: (1)@(2).(3). Easier to read, right? This is the format email addresses follow, which is the (string)@(website)(.com/edu/etc).
 
 ### Greedy and Lazy Match
 
@@ -121,46 +93,9 @@ A lazy quantifier first repeats the token as few times as required and exapnds t
 
 The lazy .*? guarantees that the  dot only matches as many characters as needed for the rest of the pattern to succeed. This means the pattern only matches one {START}…{END} item at a time, which is the goal. 
 
-### Boundaries
+## Bracket Expressions
 
-There are various types of boundaries, but for now we'll just cover word boundaries and not-a-word-boundary. A word boundary \b matches the positions where one side is a word character (such as a letter, digit, or underscore) while the other side is not a word character (such as the beginning of the string or a space character). For example, the RegEx \bbat\b would match the word bat in baseball bat, but it wouldn't match battery. 
-
-Not-a-word-boundaries (\B), on the other hand matche all positions where \b does not match in our previous example. Not-a-word-boundaries match when:
-
-- When neither side of the RegEx is a word character, for instance at any position in the string $=(@-%++) (including the beginning and end of the string)
-- When both sides of the RegEx are a word character, such as the between of H and i in "Hi!"
-
-This could be useful for various reasons. Going back to our previous example, \Bcat\B will find "cat" when it's fully surrounded by characters. cat\B will find cat in "certificate", for instance, but not in "tomcat" or on its own. 
-
-### Back-references
-
-Backreferences (\1) match the same text that's previously matched by a capturing group (remember those?). Let's say you want to match a pair of opening and closing HTML tags and the text between them. By putting the opening tag into a backreference, you can reuse the name of the tag for the closing tag. It would look something like this:
-
-<([A-Z][A-Z0-9]*)\b[^>]*>.*?</\1> 
-
-The opening HTML tag is everything within the first set of parentheses, so: [A-Z][A-Z0-9]*
-
-The backreference (\1) references the first capturing group. \1 then matches the same text from that group. 
-
-You can scan the regular expression from left to right to find the number of a particular backreference. Count the opening parentheses of all the numbered capturing groups. The first parenthesis would be backreference number one, the second number two, and so on. Skip parentheses that are part of other syntax like non-capturing groups. Note that non-capturing parentheses can be inserted into a regular expression without changing the numbers assigned to the backreferences. This can be useful when changing a complex regular expression.
-
-### Look-ahead and Look-behind
-
-Lookahead and lookbehind, together called “lookaround”, are zero-length assertions like start and end of anchors. The difference is that lookaround matches chatacters, but then gives up the match and just returns the result. They only assert whether a match ir possible or not. 
-
-There are positive and negative lookahead and positive and negative lookbehind, so let's break this down. 
-
-#### Positive and Negative Lookahead
-
-Negative lookahead allows you to match something that's not followed by something else. For instance, because you can't use a negated character class to match a q that's not followed by a u, negative lookahead provides the solution: q(?!u). The negative lookahead is the pair of parentheses, with the opening parenthesis followed by a question mark and exclamation point. 
-
-Positive lookahead works similarly, and would lool like this: q(?=u). This matches a q that's followed by a u without making the u part of the match. The positive lookahead is a pair of parentheses, with the opening parenthesis followed by a question mark and an equals sign. 
-
-#### Negative and Negative Lookahead
-
-Lookbehind has the same effect, except backwards. It tells the RegEx engine to temporarily step back in the string to check if the text inside can be matched. For instance, by using negative lookbehind, (?!a)c matches a "c" that's not preceded by an "a". This means that while it wouldn't match lab, it would match the b in bed or debt. Positive lookbehind, on the other hand, matches the b in lab, but not the b in bed or debt.
-
-The negative lookbehin is written as (?<!text) while the positive lookbehind is written as (?<=text). 
+Bracket expressions can be used to match a single character or collection of characters. In reference to our match email RegEx, [a-z0-9_\.-] matches any letter a-z and is case sensitive, matches any character from 0 to 9, and matches special characters "_", "-", and ".".
 
 ## Author
 
