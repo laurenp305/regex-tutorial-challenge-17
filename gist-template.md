@@ -2,7 +2,7 @@
 
 In JavaScript, a Regular Expression (RegEx) is an object that describes a sequence of characters used for defining a search pattern. For example, /^a...s$/. This code defines a RegEx pattern. The pattern refers to any five lietter string starting with 'a' and ending with 's'.
 
-Below is a tutorial on RegEx and how to use this object with the help of examples.
+Below is a tutorial on Match an Email RegEx and how to use this object with the help of examples.
 
 ## Summary
 
