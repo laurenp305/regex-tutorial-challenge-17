@@ -2,13 +2,13 @@
 
 In JavaScript, a Regular Expression (RegEx) is an object that describes a sequence of characters used for defining a search pattern. For example, /^a...s$/. This code defines a RegEx pattern. The pattern refers to any five lietter string starting with 'a' and ending with 's'.
 
-Below is a tutorial on Match an Email RegEx and how to use this object with the help of examples.
+Below is a tutorial on how to use the match emails RegEx using this expression: /^([a-z0-9_\.-]+)@([\da-z\.-]+)\.([a-z\.]{2,6})$/. This can be useful for validating emails using applications/technologies like Node or MongoDB.
 
 ## Summary
 
 As a junior developer, I've learned that RegEx can be a powerful tool when writing code, paticularly Javascript. The pre-defined and ready-to-use RegEx make them user friendly and make my life a lot easier! Some common examples of regular expressions include match(), matchAll(), replace(), replaceAll(), search(), and split(). RegEx can be used for forms of validation, such as when someone is filling out an online form and has to input their email address.
 
-Below are some more examples of RegEx in action and how to use it. 
+Below are some more examples of Match an Email RegEx in action and how to use it. 
 
 ## Table of Contents
 
