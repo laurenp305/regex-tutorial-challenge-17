@@ -177,15 +177,45 @@ The lazy .*? guarantees that the  dot only matches as many characters as needed 
 
 ### Boundaries
 
-There are various types of boundaries, but for now we'll just cover word boundaries. A word boundary \b matches the positions where one side is a word character (such as a letter, digit, or underscore) while the other side is not a word character (such as the beginning of the string or a space character). 
+There are various types of boundaries, but for now we'll just cover word boundaries and not-a-word-boundary. A word boundary \b matches the positions where one side is a word character (such as a letter, digit, or underscore) while the other side is not a word character (such as the beginning of the string or a space character). For example, the RegEx \bbat\b would match the word bat in baseball bat, but it wouldn't match battery. 
 
-For example, the RegEx \bbat\b would match the word bat in baseball bat, but it wouldn't match battery. If we were to have another example, such as \bcat\b, cat would match in catfish but wou
+Not-a-word-boundaries (\B), on the other hand matche all positions where \b does not match in our previous example. Not-a-word-boundaries match when:
 
+- When neither side of the RegEx is a word character, for instance at any position in the string $=(@-%++) (including the beginning and end of the string)
+- When both sides of the RegEx are a word character, such as the between of H and i in "Hi!"
+
+This could be useful for various reasons. Going back to our previous example, \Bcat\B will find "cat" when it's fully surrounded by characters. cat\B will find cat in "certificate", for instance, but not in "tomcat" or on its own. 
 
 ### Back-references
 
+Backreferences (\1) match the same text that's previously matched by a capturing group (remember those?). Let's say you want to match a pair of opening and closing HTML tags and the text between them. By putting the opening tag into a backreference, you can reuse the name of the tag for the closing tag. It would look something like this:
+
+<([A-Z][A-Z0-9]*)\b[^>]*>.*?</\1> 
+
+The opening HTML tag is everything within the first set of parentheses, so: [A-Z][A-Z0-9]*
+
+The backreference (\1) references the first capturing group. \1 then matches the same text from that group. 
+
+You can scan the regular expression from left to right to find the number of a particular backreference. Count the opening parentheses of all the numbered capturing groups. The first parenthesis would be backreference number one, the second number two, and so on. Skip parentheses that are part of other syntax like non-capturing groups. Note that non-capturing parentheses can be inserted into a regular expression without changing the numbers assigned to the backreferences. This can be useful when changing a complex regular expression.
+
 ### Look-ahead and Look-behind
+
+Lookahead and lookbehind, together called “lookaround”, are zero-length assertions like start and end of anchors. The difference is that lookaround matches chatacters, but then gives up the match and just returns the result. They only assert whether a match ir possible or not. 
+
+There are positive and negative lookahead and positive and negative lookbehind, so let's break this down. 
+
+#### Positive and Negative Lookahead
+
+Negative lookahead allows you to match something that's not followed by something else. For instance, because you can't use a negated character class to match a q that's not followed by a u, negative lookahead provides the solution: q(?!u). The negative lookahead is the pair of parentheses, with the opening parenthesis followed by a question mark and exclamation point. 
+
+Positive lookahead works similarly, and would lool like this: q(?=u). This matches a q that's followed by a u without making the u part of the match. The positive lookahead is a pair of parentheses, with the opening parenthesis followed by a question mark and an equals sign. 
+
+#### Negative and Negative Lookahead
+
+Lookbehind has the same effect, except backwards. It tells the RegEx engine to temporarily step back in the string to check if the text inside can be matched. For instance, by using negative lookbehind, (?!a)c matches a "c" that's not preceded by an "a". This means that while it wouldn't match lab, it would match the b in bed or debt. Positive lookbehind, on the other hand, matches the b in lab, but not the b in bed or debt.
+
+The negative lookbehin is written as (?<!text) while the positive lookbehind is written as (?<=text). 
 
 ## Author
 
-A short section about the author with a link to the author's GitHub profile (replace with your information and a link to your profile)
+My name is Lauren Pineiro and I'm a future front-end web developer in training. You can reach me via email at lamor1800@gmail.com or through GitHub: https://github.com/laurenp305 where you can also check out some of my other work.
