@@ -30,7 +30,7 @@ Below are some more examples of Match an Email RegEx in action and how to use it
 
 Anchors are used at the beginning and end of searches to check if a string fully matches a pattern, although they themselves do not match the characters. They strictly affirm a string matches a location. Anchors will create parameters.
 
-Common types of RegEx anchors are ^ (caret)	and $ (dollar). 
+The anchors used in match email RegEx are ^ (caret), which indicates the beginning of the string, and $ (dollar), which indicates the end of the string.
 
 #### Caret
 
