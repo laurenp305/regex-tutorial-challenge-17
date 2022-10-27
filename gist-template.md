@@ -43,15 +43,13 @@ The ^ anchor signifies a string that begins with the characters that follow. Thi
 
 The $ anchor signifies a string that ends with the characters before it. Just as with the ^ character, the $ character can be preceded by an exact string or a range of possible matches. 
 
-So if we were to match the username /^[b-l0-9_-]{3,15}$/, the string must start and end with something that mathces the pattern [b-l0-9_-]. However, {3,16} is not included in our match because it's a different component called a quantifier, which is up next on our tutorial.
-
 ### Quantifiers
 
 Quantifiers set the limits of a string that your RegEx matches (or an individual section of the string). They often include the minimum and maximum number of characters that your RegEx is looking for. 
 
-Quantifiers in the matching email RegEx includes the + operator, which connects the user's email name+ email service+ .com. Another quantifier used in this regular expression is {2,6}. In the expression /^[b-l0-9_.-]+, any character matching the characters inside the bracket is expected to appear at least once with no maximum. 
+Quantifiers in the matching email RegEx includes the + operator, which connects the user's email name+ email service+ .com. Another quantifier used in this regular expression is {2,6}. In our expression [a-z0-9_.-]+, any character matching the characters inside the bracket is expected to appear at least once with no maximum. 
 
-If we were to have an expression such as [b-z.]{2,6}, then 2 to 6 characters matching those inside the brackets are expected. The numbers inside the curly brackets refers to the minimum and maximum number of characters expected.
+If we were to have an expression such as [a-z.]{2,6}, then 2 to 6 characters matching those inside the brackets are expected. The numbers inside the curly brackets refers to the minimum and maximum number of characters expected.
 
 ### Character Classes & Escapes 
 
@@ -59,21 +57,9 @@ If we were to have an expression such as [b-z.]{2,6}, then 2 to 6 characters mat
 
 A character class in a RegEx defines a set of characters, any of which can occur in an input string to accomplish a match. In addition to the positive and ngative character groups, other common character classes include: 
 
-- .—Matches any character except the newline character (\n)
+In our expression, \d in [\da-z\.-]+ is used to match any digital character. The backslash is needed to differentiate between the digital class from the letter d. While we only have one character class in our match email expression, the function of a backslash helps us understand the "." part of the expression.
 
-- \d—Matches any Arabic numeral digit. This class is equivalent to the bracket expression [0-9].
-
-- \w—Matches any alphanumeric (letters and numbers) character from the basic Latin alphabet, including the underscore (_). This class equates to this bracket expression [A-Za-z0-9_].
-
-- \s—Matches a single whitespace character, including tabs and line breaks
-
-The last three character classes listed can be changed to perform an inverse match by capitalizing letters. 
-
-#### Escapes 
-
-The backlash (\) in a RegEx "escapes" a character that would other be interpreted literally. For instance, the open curly bracket ({) is used to begin a qunatifier, but adding a backslash before it (\{) tells the RegEx to look for the open curly bracket character instead of beginning to define a quantifier. This is common when looks for strings with special characters that are the same as a particular component of a regular expression.
-
-*Don't forget that all special characters, including the backslash, lose their "special" title inside bracket expressions.
+Additionally, unlike other character classes, \d, \w (matches a word character), and \s (matches a whitespace characters), the character class "." - which matches any character - doesn't require a backslash. As a result, the backslash has to be used to negate its use as a character class and interpret it as the character ".".
 
 ### Flags
 
