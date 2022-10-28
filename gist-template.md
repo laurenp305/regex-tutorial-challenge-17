@@ -66,32 +66,7 @@ For example, when we look at our expression /^([a-z0-9_.-]+)@([\da-z.-]+).([a-z.
 
 ### Greedy and Lazy Match
 
-#### Greedy Quantifiers
-
-Greedy quantifiers in RegEx match as much as they can, only giving back what's necessary to match the remainder of the expression. For instance, suppse you wnat to match tokens that begin with {START} and end with {END}, you'd try this: {START}.*{END}
-
-However, you'd find that this pattern mathces the entire string from beginning to end: 
-
-{START} Twinkle {END} twinkle {START} little star {END}
-
-whereas we wanted to find two separate matches:
-
-{START} Twinkle {END}
-{START} little star {END}
-
-So, what happened? Well, after matching {START}, the engine moves to the next token, which is .*
-
-Because of this greedy quantifier, the dot-star maches all the characters to the end of the string. Then the engine moves to the next taken: the { at the beginning of {END}. But this fails to match because there are no characters left. 
-
-However, the engine sees that it can backtrack into the dot-star. First, the dot-star gives up the last character in the string: {. The engine  tries to match the { token against this character, but fails. The dot-star then gives up the D. Again, the engine fails to match the { token against that character. Repeating this process, the dot-star gives up the N, the E and the {, and and the { token can finally match. Then the rest of the pattern END} matches, making the entire string the match. 
-
-A good way to solve this problem is with lazy quantifiers. 
-
-#### Lazy Quantifiers
-
-A lazy quantifier first repeats the token as few times as required and exapnds the match as the engine backtracks through the regular expression to find an overall match. You can make a greedy quantifier lazy by adding a ? mark. For instance, you'd add a question mark to the previous example like this: {START}.*?{END}
-
-The lazy .*? guarantees that the  dot only matches as many characters as needed for the rest of the pattern to succeed. This means the pattern only matches one {START}…{END} item at a time, which is the goal. 
+This RegEx uses a greedy match, which is marked by the quantifiers "+", "*", and "{#}", all of which tell the RegEx to parse the input string attempt to match the largest group within the parameters. For instance, {#} (which is {2,6} in our expression) tells the RegEx to try and match between 2 and 6 times, or as many as possible for our given string. Lazy matches are marked by the question mark "?", but this can do different things. For instance, in this part of our expression ([a-z0-9_.-]+?), the lazy match would attempt to match as few times as possible.
 
 ## Bracket Expressions
 
